@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orientation Example</title>
+</head>
+<body>
+
+<script>
+  // Check the initial orientation
+  checkOrientation();
+
+  // Create a media query for the orientation
+  let portrait = window.matchMedia("(orientation: portrait)");
+
+  // Add event listener for changes in orientation
+  portrait.addEventListener("change", function (e) {
+    checkOrientation();
+  });
+
+  // Function to handle orientation changes
+  function checkOrientation() {
+    if (portrait.matches) {
+      // Portrait mode
+      document.body.style.backgroundColor = "lightblue";
+      console.log("Portrait mode");
+    } else {
+      // Landscape mode
+      document.body.style.backgroundColor = "lightgreen";
+      console.log("Landscape mode");
+    }
+  }
+</script>
+
+</body>
+</html>
