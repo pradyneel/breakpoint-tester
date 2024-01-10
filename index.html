@@ -10,17 +10,34 @@
 <script>
   // Create a media query for the orientation
   var portrait = window.matchMedia("(orientation: portrait)");
+  var landscape = window.matchMedia("(orientation: landscape)");
+
+  function isMobile() {
+    // Check if the device is a mobile
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+
+  function isMobileLandscape() {
+    // Check if the device is a mobile and in landscape mode
+    return (
+      isMobile() && window.matchMedia("(orientation: landscape)").matches
+    );
+  }
 
   // Function to handle orientation changes
   function checkOrientation() {
-    if (portrait.matches) {
-      // Portrait mode
-      document.body.style.backgroundColor = "lightblue";
-      console.log("Portrait mode");
-    } else {
-      // Landscape mode
+    // Example usage
+    if (isMobileLandscape()) {
+      alert("You are in landscape mode on a mobile screen!");
       document.body.style.backgroundColor = "lightgreen";
-      console.log("Landscape mode");
+    } else if (isMobile()) {
+      alert("You are in portrait mode on a mobile screen.");
+      document.body.style.backgroundColor = "lightblue";
+    } else {
+      alert("You are on a desktop screen.");
+      document.body.style.backgroundColor = "white";
     }
   }
 
