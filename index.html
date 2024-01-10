@@ -8,16 +8,8 @@
 <body>
 
 <script>
-  // Check the initial orientation
-  checkOrientation();
-
   // Create a media query for the orientation
   var portrait = window.matchMedia("(orientation: portrait)");
-
-  // Add event listener for changes in orientation
-  portrait.addEventListener("change", function (e) {
-    checkOrientation();
-  });
 
   // Function to handle orientation changes
   function checkOrientation() {
@@ -31,6 +23,16 @@
       console.log("Landscape mode");
     }
   }
+
+  // Check the orientation on initial page load
+  window.addEventListener("load", function() {
+    checkOrientation();
+  });
+
+  // Add event listener for changes in orientation
+  portrait.addEventListener("change", function (e) {
+    checkOrientation();
+  });
 </script>
 
 </body>
